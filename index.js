@@ -36,6 +36,31 @@ const fi = (function() {
       return endPoint
     },
 
+    find: function(collection, statement) {
+      const collectionToIterate = (collection instanceof Array) ? collection : Object.values(collection)
+        for (let i = 0; i < collectionToIterate.length; i++)
+        if (statement(collectionToIterate[i])) {
+          return collectionToIterate[i]
+        }
+
+        return undefined
+    },
+
+    filter: function(collection, statement) {
+      let savedValues = []
+      const collectionToIterate = (collection instanceof Array) ? collection : Object.values(collection)
+        for (let i = 0; i < collectionToIterate.length; i++)
+        if (statement(collectionToIterate[i])) {
+          savedValues.push(collectionToIterate[i])
+        }
+        return savedValues
+      },
+
+      size: function(collection) {
+        const collectionToCount = (collection instanceof Array) ? collection : Object.values(collection)
+        return collectionToCount.length
+      },
+
     functions: function() {
 
     },
