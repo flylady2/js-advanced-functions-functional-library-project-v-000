@@ -61,6 +61,66 @@ const fi = (function() {
         return collectionToCount.length
       },
 
+      first: function(collection, num) {
+        if (num) {
+          return collection.slice(0, num)
+        }
+        else {
+          return collection[0]
+        }
+      },
+
+      last: function(collection, num) {
+        if (!num) {
+          return collection[collection.length - 1]
+        }
+        else {
+          return collection.slice(collection.length - num)
+        }
+      },
+
+      compact: function(collection) {
+        let newCollection = []
+        for (let i = 0; i < collection.length; i++) {
+          if (!collection[i] === false) {
+            newCollection.push(collection[i])}
+
+      }
+        return newCollection
+    },
+
+    sortBy: function(collection, callback) {
+      const collectionToIterate = (collection instanceof Array) ? collection : Object.values(collection)
+      return collectionToIterate.sort(function(a, b) {return callback(a) - callback(b)})
+      //return newColl
+    },
+
+    //sortBy: function(collection, callback) {
+      //const collectionToIterate = (collection instanceof Array) ? collection : Object.values(collection)
+      //return collectionToIterate.sort(function(a, b) {callback(a) - callback(b)})
+  //  },
+
+
+    keys: function(collection) {
+      let newCollection = []
+      let collectionToIterate = Object.keys(collection)
+      for (let i = 0; i < collectionToIterate.length; i++) {
+        newCollection.push(collectionToIterate[i])
+      }
+      return newCollection
+    },
+
+    values: function(collection) {
+      let newCollection = []
+      let collectionToIterate = Object.values(collection)
+      for (let i = 0; i < collectionToIterate.length; i++) {
+        newCollection.push(collectionToIterate[i])
+      }
+      return newCollection
+    },
+
+
+
     functions: function() {
 
     },
